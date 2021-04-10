@@ -1,0 +1,8 @@
+---
+resources:
+  - name: fromdeploymentmanager
+    type: storage.v1.bucket
+    properties:
+      name: qtbucketfromdeployment
+      location: US-CENTRAL1
+      storageClass: STANDARD
