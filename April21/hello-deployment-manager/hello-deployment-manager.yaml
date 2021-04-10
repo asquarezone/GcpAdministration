@@ -6,3 +6,11 @@ resources:
       name: qtbucketfromdeployment
       location: US-CENTRAL1
       storageClass: STANDARD
+  - name: vpc
+    type: compute.v1.network
+    properties:
+      name: vpcfromdm
+      description: learning to create vpc from deployment manager
+      autoCreateSubnetworks: yes
+      
+      
