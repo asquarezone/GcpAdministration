@@ -2,8 +2,8 @@ resources:
   - name: my-first-vm
     type: compute.v1.instance
     properties:
-      machineType: https://www.googleapis.com/compute/v1/projects/qtlearning/zones/us-central1-f/machineTypes/f1-micro
-      zone: us-central1-f
+      machineType: https://www.googleapis.com/compute/v1/projects/{{ properties["project"] }}/zones/{{ properties["zone"] }}/machineTypes/f1-micro
+      zone: {{ properties["zone"] }}
       networkInterfaces:
         - network: global/networks/default
       disks:

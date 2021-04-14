@@ -3,3 +3,6 @@ imports:
 resources:
   - name: vm1
     type: ubuntuvm.jinja
+    properties:
+      project: qtlearning
+      zone: us-central1-f
