@@ -1,0 +1,5 @@
+imports:
+  - path: ubuntuvm.jinja
+resources:
+  - name: vm1
+    type: ubuntuvm.jinja

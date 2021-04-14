@@ -1,0 +1,14 @@
+resources:
+  - name: my-first-vm
+    type: compute.v1.instance
+    properties:
+      machineType: https://www.googleapis.com/compute/v1/projects/qtlearning/zones/us-central1-f/machineTypes/f1-micro
+      zone: us-central1-f
+      networkInterfaces:
+        - network: global/networks/default
+      disks:
+        - type: PERSISTENT
+          boot: yes
+          initializeParams:
+            sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20210412
+          
