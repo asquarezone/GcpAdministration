@@ -1,0 +1,7 @@
+resources:
+  - name: {{ properties["networkname"] }}
+    type: compute.v1.network
+    properties:
+      autoCreateSubnetworks: yes
+      routingConfig:
+        routingMode: GLOBAL

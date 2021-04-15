@@ -1,0 +1,8 @@
+imports:
+  - path: network-template.jinja
+resources:
+  - name: network
+    type: network-template.jinja
+    properties:
+      networkname: vpcfromdm
+      
