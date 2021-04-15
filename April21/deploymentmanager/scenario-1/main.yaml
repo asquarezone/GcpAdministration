@@ -1,8 +1,13 @@
 imports:
   - path: network-template.jinja
+  - path: firewall-template.jinja
 resources:
   - name: network
     type: network-template.jinja
+    properties:
+      networkname: vpcfromdm
+  - name: firewall
+    type: firewall-template.jinja
     properties:
       networkname: vpcfromdm
       
