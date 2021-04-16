@@ -3,10 +3,20 @@ resources:
   - name: allowhttps
     type: compute.v1.firewall
     properties:
-      network: $(ref.{{ properties["networkname"] }}.selfLink)
+      network: {{ properties["network"] }}
       sourceRanges: ["0.0.0.0/0"]
       allowed:
         - IPProtocol: TCP
           ports: 
             - "80"
             - "443"
+  - name: allowssh
+    type: compute.v1.firewall
+    properties:
+      network: {{ properties["network"] }}
+      sourceRanges: ["0.0.0.0/0"]
+      allowed:
+        - IPProtocol: TCP
+          ports: 
+            - "22"
+  

@@ -1,7 +1,14 @@
+---
 resources:
-  - name: {{ properties["networkname"] }}
+  - name: new-network
     type: compute.v1.network
     properties:
-      autoCreateSubnetworks: yes
       routingConfig:
-        routingMode: GLOBAL
+        routingMode: REGIONAL
+      autoCreateSubnetworks: yes
+
+outputs:
+  - name: selfLink
+    value: $(ref.new-network.selfLink)
+  - name: subnetworks
+    value: $(ref.new-network.subnetworks)
