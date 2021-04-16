@@ -1,0 +1,31 @@
+---
+resources:
+  - name: openhttp
+    type: compute.v1.firewall
+    properties: 
+      name: openhttp
+      network: $(ref.new-network.selfLink)
+      sourceRanges:
+        - "0.0.0.0/0"
+      allowed:
+        - IPProtocol: tcp
+          ports:
+            - "80"
+            - "443"
+  - name: openssh
+    type: compute.v1.firewall
+    properties: 
+      name: openssh
+      network: $(ref.new-network.selfLink)
+      sourceRanges:
+        - "0.0.0.0/0"
+      allowed:
+        - IPProtocol: tcp
+          ports:
+            - "22"
+  - name: new-network
+    type: compute.v1.network
+    properties:
+      routingConfig:
+        routingMode: REGIONAL
+      autoCreateSubnetworks: yes
