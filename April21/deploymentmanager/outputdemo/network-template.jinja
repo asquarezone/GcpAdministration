@@ -1,0 +1,14 @@
+---
+resources:
+  - name: new-network
+    type: compute.v1.network
+    properties:
+      routingConfig:
+        routingMode: REGIONAL
+      autoCreateSubnetworks: yes
+
+outputs:
+  - name: selfLink
+    value: $(ref.new-network.selfLink)
+  - name: subnetworks
+    value: $(ref.new-network.subnetworks)

@@ -1,0 +1,42 @@
+---
+imports:
+  - path: network-template.jinja
+resources:
+  - name: openhttp
+    type: compute.v1.firewall
+    properties: 
+      name: openhttp
+      network: $(ref.network-from-template.selfLink)
+      sourceRanges:
+        - "0.0.0.0/0"
+      allowed:
+        - IPProtocol: tcp
+          ports:
+            - "80"
+            - "443"
+  - name: openssh
+    type: compute.v1.firewall
+    properties: 
+      name: openssh
+      network: $(ref.network-from-template.selfLink)
+      sourceRanges:
+        - "0.0.0.0/0"
+      allowed:
+        - IPProtocol: tcp
+          ports:
+            - "22"
+  - name: network-from-template
+    type: network-template.jinja
+    properties: {}
+
+outputs:
+  - name: openhttp-firewallurl
+    value: $(ref.openhttp.selfLink)
+  - name: openssh-firewallurl
+    value: $(ref.openssh.selfLink)
+  - name: network-url
+    value: $(ref.network-from-template.selfLink)
+  - name: subnets
+    value: $(ref.network-from-template.subnetworks)
+
+    
