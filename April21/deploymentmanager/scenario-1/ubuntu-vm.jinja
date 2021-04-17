@@ -1,0 +1,26 @@
+resources:
+  - name: ubuntu-vm
+    type: compute.v1.instance
+    properties:
+      machineType: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/zones/{{ properties["zone"] }}/machineTypes/{{ properties["machineType"] }}
+      zone: {{ properties["zone"] }}
+      tags: 
+        items:
+          - allowssh
+          - openall
+
+      networkInterfaces:
+        - network: {{ properties["network"] }}
+          accessConfigs:
+            - name: External NAT
+              type:  ONE_TO_ONE_NAT
+      disks:
+        - type: PERSISTENT
+          boot: yes
+          initializeParams:
+            sourceImage: https://www.googleapis.com/compute/1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20210412
+outputs:
+  - name: Id
+    value: $(ref.ubuntu-vm.id)
+  - name: publicIp
+    value: $(ref.ubuntu-vm.networkInterfaces[0].accessConfigs[0].natIP)

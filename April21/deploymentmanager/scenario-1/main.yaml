@@ -2,18 +2,36 @@
 imports:
   - path: network-template.jinja
   - path: firewall-template.jinja
+  - path: ubuntu-vm.jinja
 resources:
   - name: firewall-template
     type: firewall-template.jinja
     properties:
       network: $(ref.network-from-template.selfLink)
+    metadata:
+      dependsOn:
+        - network-from-template
   - name: network-from-template
     type: network-template.jinja
     properties: {}
+  - name: ubuntu-vm
+    type: ubuntu-vm.jinja
+    properties:
+      network: $(ref.network-from-template.selfLink)
+      machineType: f1-micro
+      vmname: ubuntu-vm
+      zone: "us-central1-f"
+    metadata:
+      dependsOn:
+        - network-from-template
+        - firewall-template
+
 
 outputs:
   - name: network-url
     value: $(ref.network-from-template.selfLink)
+  - name: public-ip
+    value: $(ref.ubuntu-vm.publicIp)
 
 
     
