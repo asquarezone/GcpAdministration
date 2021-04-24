@@ -1,0 +1,7 @@
+cron:
+  - description: run daily
+    url: /api/days
+    schedule: every 24 hours
+  - description: run every 5 mins
+    url: /api/colors
+    schedule: every 5 mins
